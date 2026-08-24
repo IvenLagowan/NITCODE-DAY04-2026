@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NITCODE COMUNITY - Admin Panel</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        nitgreen: '#00ff88',
+                        nitdark: '#07110d'
+                    },
+                    boxShadow: {
+                        neon: '0 0 25px rgba(0,255,136,.18)'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 dark:bg-[#050807] text-gray-800 dark:text-gray-100">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside id="sidebar"
+        class="fixed top-0 left-0 z-50 w-72 h-screen bg-[#07110d] text-white border-r border-green-500/10 transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
+
+        <!-- Logo -->
+        <div class="h-20 flex items-center px-6 border-b border-white/10">
+            <div
+                class="w-11 h-11 rounded-xl bg-green-400 text-black flex items-center justify-center font-black text-xl shadow-neon">
+                N
+            </div>
+
+            <div class="ml-3">
+                <h1 class="font-black text-lg">
+                    NITCODE
+                </h1>
+                <p class="text-xs text-green-400 tracking-widest">
+                    COMUNITY
+                </p>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="p-4 overflow-y-auto h-[calc(100vh-80px)]">
+
+            <p class="text-[11px] uppercase text-gray-500 font-bold px-3 mb-3">
+                Main Menu
+            </p>
+
+            <nav class="space-y-1">
+
+                <a href="#"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl bg-green-400 text-black font-semibold">
+                    <i class="fa-solid fa-chart-pie w-5"></i>
+                    Dashboard
+                </a>
+
+                <a href="#members"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition">
+                    <i class="fa-solid fa-users w-5 text-green-400"></i>
+                    Members
+                    <span class="ml-auto bg-green-400 text-black text-xs px-2 py-1 rounded-full">
+                        1.2K
+                    </span>
+                </a>
+
+                <a href="#courses"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition">
+                    <i class="fa-solid fa-book-open w-5 text-green-400"></i>
+                    Courses
+                </a>
+
+                <a href="#materials"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition">
+                    <i class="fa-solid fa-file-lines w-5 text-green-400"></i>
+                    Materials
+                </a>
+
+                <a href="#mentors"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition">
+                    <i class="fa-solid fa-user-tie w-5 text-green-400"></i>
+                    Mentors
+                </a>
+
+                <a href="#schedule"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition">
+                    <i class="fa-solid fa-calendar-days w-5 text-green-400"></i>
+                    Schedule
+                </a>
+
+            </nav>
+
+            <p class="text-[11px] uppercase text-gray-500 font-bold px-3 mb-3 mt-8">
+                Management
+            </p>
+
+            <nav class="space-y-1">
+
+                <a href="#payments"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition">
+                    <i class="fa-solid fa-wallet w-5 text-green-400"></i>
+                    Payments
+                </a>
+
+                <a href="#certificates"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition">
+                    <i class="fa-solid fa-certificate w-5 text-green-400"></i>
+                    Certificates
+                </a>
+
+                <a href="#messages"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition">
+                    <i class="fa-solid fa-comments w-5 text-green-400"></i>
+                    Messages
+                    <span class="ml-auto bg-red-500 text-white text-xs px-2 py-1 rounded-full">
+                        5
+                    </span>
+                </a>
+
+                <a href="#reports"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition">
+                    <i class="fa-solid fa-chart-line w-5 text-green-400"></i>
+                    Reports
+                </a>
+
+            </nav>
+
+            <p class="text-[11px] uppercase text-gray-500 font-bold px-3 mb-3 mt-8">
+                System
+            </p>
+
+            <nav>
+                <a href="#settings"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition">
+                    <i class="fa-solid fa-gear w-5 text-green-400"></i>
+                    Settings
+                </a>
+            </nav>
+
+            <!-- Admin Profile -->
+            <div class="mt-8 p-4 rounded-2xl bg-white/5 border border-white/10">
+
+                <div class="flex items-center">
+
+                    <div
+                        class="w-11 h-11 rounded-full bg-green-400 text-black flex items-center justify-center font-bold">
+                        A
+                    </div>
+
+                    <div class="ml-3">
+                        <h4 class="font-semibold">
+                            Administrator
+                        </h4>
+
+                        <p class="text-xs text-gray-400">
+                            Super Admin
+                        </p>
+                    </div>
+
+                </div>
+
+                <button
+                    class="w-full mt-4 py-2 rounded-lg border border-red-500/20 text-red-400 hover:bg-red-500/10 transition">
+                    <i class="fa-solid fa-right-from-bracket mr-2"></i>
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+    </aside>
+
+
+    <!-- ================= OVERLAY MOBILE ================= -->
+    <div id="overlay"
+        onclick="toggleSidebar()"
+        class="fixed inset-0 bg-black/60 z-40 hidden lg:hidden">
+    </div>
+
+
+    <!-- ================= MAIN ================= -->
+    <main class="lg:ml-72 min-h-screen">
+
+        <!-- ================= NAVBAR ================= -->
+        <header
+            class="h-20 bg-white dark:bg-[#08100c] border-b border-gray-200 dark:border-white/10 sticky top-0 z-30">
+
+            <div class="h-full px-4 md:px-8 flex items-center justify-between">
+
+                <div class="flex items-center gap-4">
+
+                    <!-- Mobile Menu -->
+                    <button onclick="toggleSidebar()"
+                        class="lg:hidden w-10 h-10 rounded-xl bg-gray-100 dark:bg-white/5">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+                    <div>
+                        <h2 class="font-bold text-lg md:text-xl">
+                            Admin Dashboard
+                        </h2>
+
+                        <p class="text-xs text-gray-500">
+                            NITCODE COMUNITY
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="flex items-center gap-3">
+
+                    <!-- Search -->
+                    <div class="hidden md:flex relative">
+
+                        <i
+                            class="fa-solid fa-search absolute left-4 top-3 text-gray-400"></i>
+
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            class="w-56 lg:w-72 pl-11 pr-4 py-2.5 rounded-xl bg-gray-100 dark:bg-white/5 border border-transparent focus:border-green-400 outline-none">
+                    </div>
+
+                    <!-- Notification -->
+                    <button
+                        class="relative w-11 h-11 rounded-xl bg-gray-100 dark:bg-white/5 hover:bg-green-400 hover:text-black transition">
+
+                        <i class="fa-regular fa-bell"></i>
+
+                        <span
+                            class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-[10px] rounded-full flex items-center justify-center">
+                            4
+                        </span>
+
+                    </button>
+
+                    <!-- Dark Mode -->
+                    <button onclick="toggleDarkMode()"
+                        class="w-11 h-11 rounded-xl bg-gray-100 dark:bg-white/5 hover:bg-green-400 hover:text-black transition">
+
+                        <i id="themeIcon"
+                            class="fa-solid fa-moon"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+        <section class="p-4 md:p-8">
+
+            <!-- Welcome -->
+            <div
+                class="relative overflow-hidden rounded-3xl bg-[#07110d] text-white p-6 md:p-8 mb-8 shadow-neon">
+
+                <div class="relative z-10">
+
+                    <span
+                        class="inline-block px-3 py-1 rounded-full bg-green-400/10 text-green-400 text-xs font-bold mb-3">
+                        ADMIN PANEL
+                    </span>
+
+                    <h1 class="text-2xl md:text-4xl font-black">
+                        Selamat Datang, Admin 👋
+                    </h1>
+
+                    <p class="text-gray-400 mt-2 max-w-2xl">
+                        Kelola seluruh aktivitas belajar, member,
+                        kursus, mentor dan sistem NITCODE COMUNITY
+                        dari satu dashboard.
+                    </p>
+
+                </div>
+
+                <div
+                    class="absolute -right-20 -top-20 w-72 h-72 rounded-full bg-green-400/10 blur-3xl">
+                </div>
+
+                <div
+                    class="absolute right-20 bottom-0 w-40 h-40 rounded-full bg-green-400/10 blur-3xl">
+                </div>
+
+            </div>
+
+
+            <!-- ================= STATISTICS ================= -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-8">
+
+                <!-- Card -->
+                <div
+                    class="bg-white dark:bg-[#0b1510] rounded-2xl p-5 border border-gray-200 dark:border-white/10 hover:border-green-400/30 transition">
+
+                    <div class="flex justify-between">
+
+                        <div>
+                            <p class="text-sm text-gray-500">
+                                Total Members
+                            </p>
+
+                            <h3 class="text-3xl font-black mt-2">
+                                1,284
+                            </h3>
+
+                            <p class="text-xs text-green-500 mt-2">
+                                <i class="fa-solid fa-arrow-up"></i>
+                                12.5% bulan ini
+                            </p>
+                        </div>
+
+                        <div
+                            class="w-12 h-12 rounded-xl bg-green-400/10 text-green-400 flex items-center justify-center">
+                            <i class="fa-solid fa-users text-xl"></i>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="bg-white dark:bg-[#0b1510] rounded-2xl p-5 border border-gray-200 dark:border-white/10">
+
+                    <div class="flex justify-between">
+
+                        <div>
+                            <p class="text-sm text-gray-500">
+                                Total Courses
+                            </p>
+
+                            <h3 class="text-3xl font-black mt-2">
+                                32
+                            </h3>
+
+                            <p class="text-xs text-green-500 mt-2">
+                                <i class="fa-solid fa-arrow-up"></i>
+                                8.2% bulan ini
+                            </p>
+                        </div>
+
+                        <div
+                            class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center">
+                            <i class="fa-solid fa-book-open text-xl"></i>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="bg-white dark:bg-[#0b1510] rounded-2xl p-5 border border-gray-200 dark:border-white/10">
+
+                    <div class="flex justify-between">
+
+                        <div>
+                            <p class="text-sm text-gray-500">
+                                Completed
+                            </p>
+
+                            <h3 class="text-3xl font-black mt-2">
+                                856
+                            </h3>
+
+                            <p class="text-xs text-green-500 mt-2">
+                                <i class="fa-solid fa-arrow-up"></i>
+                                15.4% bulan ini
+                            </p>
+                        </div>
+
+                        <div
+                            class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center">
+                            <i class="fa-solid fa-graduation-cap text-xl"></i>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="bg-white dark:bg-[#0b1510] rounded-2xl p-5 border border-gray-200 dark:border-white/10">
+
+                    <div class="flex justify-between">
+
+                        <div>
+                            <p class="text-sm text-gray-500">
+                                Revenue
+                            </p>
+
+                            <h3 class="text-3xl font-black mt-2">
+                                Rp 24.8M
+                            </h3>
+
+                            <p class="text-xs text-green-500 mt-2">
+                                <i class="fa-solid fa-arrow-up"></i>
+                                10.8% bulan ini
+                            </p>
+                        </div>
+
+                        <div
+                            class="w-12 h-12 rounded-xl bg-yellow-500/10 text-yellow-500 flex items-center justify-center">
+                            <i class="fa-solid fa-wallet text-xl"></i>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= CHART + QUICK ACTION ================= -->
+            <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-8">
+
+                <!-- Chart -->
+                <div
+                    class="xl:col-span-2 bg-white dark:bg-[#0b1510] rounded-2xl p-5 border border-gray-200 dark:border-white/10">
+
+                    <div class="flex justify-between items-center mb-5">
+
+                        <div>
+                            <h3 class="font-bold text-lg">
+                                Statistik Member
+                            </h3>
+
+                            <p class="text-xs text-gray-500">
+                                Pertumbuhan member 2026
+                            </p>
+                        </div>
+
+                        <select
+                            class="bg-gray-100 dark:bg-white/5 border-0 rounded-lg px-3 py-2 text-sm outline-none">
+                            <option>2026</option>
+                            <option>2025</option>
+                            <option>2024</option>
+                        </select>
+
+                    </div>
+
+                    <div class="h-72">
+                        <canvas id="memberChart"></canvas>
+                    </div>
+
+                </div>
+
+
+                <!-- Quick Action -->
+                <div
+                    class="bg-white dark:bg-[#0b1510] rounded-2xl p-5 border border-gray-200 dark:border-white/10">
+
+                    <h3 class="font-bold text-lg">
+                        Quick Actions
+                    </h3>
+
+                    <p class="text-xs text-gray-500 mb-5">
+                        Akses fitur admin dengan cepat
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-3">
+
+                        <button
+                            class="p-4 rounded-xl bg-green-400/10 hover:bg-green-400 hover:text-black transition text-left">
+
+                            <i class="fa-solid fa-user-plus text-green-400"></i>
+
+                            <p class="text-sm font-semibold mt-3">
+                                Add Member
+                            </p>
+
+                        </button>
+
+
+                        <button
+                            class="p-4 rounded-xl bg-blue-500/10 hover:bg-blue-500 hover:text-white transition text-left">
+
+                            <i class="fa-solid fa-plus text-blue-500"></i>
+
+                            <p class="text-sm font-semibold mt-3">
+                                Add Course
+                            </p>
+
+                        </button>
+
+
+                        <button
+                            class="p-4 rounded-xl bg-purple-500/10 hover:bg-purple-500 hover:text-white transition text-left">
+
+                            <i class="fa-solid fa-calendar-plus text-purple-500"></i>
+
+                            <p class="text-sm font-semibold mt-3">
+                                Schedule
+                            </p>
+
+                        </button>
+
+
+                        <button
+                            class="p-4 rounded-xl bg-yellow-500/10 hover:bg-yellow-500 hover:text-black transition text-left">
+
+                            <i class="fa-solid fa-file-invoice-dollar text-yellow-500"></i>
+
+                            <p class="text-sm font-semibold mt-3">
+                                Payment
+                            </p>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= TABLE + ACTIVITY ================= -->
+            <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+
+                <!-- Members Table -->
+                <div
+                    class="xl:col-span-2 bg-white dark:bg-[#0b1510] rounded-2xl border border-gray-200 dark:border-white/10 overflow-hidden">
+
+                    <div class="p-5 flex justify-between items-center">
+
+                        <div>
+                            <h3 class="font-bold text-lg">
+                                Member Terbaru
+                            </h3>
+
+                            <p class="text-xs text-gray-500">
+                                Member yang baru bergabung
+                            </p>
+                        </div>
+
+                        <button
+                            class="text-green-500 text-sm font-semibold hover:underline">
+                            Lihat Semua
+                        </button>
+
+                    </div>
+
+
+                    <div class="overflow-x-auto">
+
+                        <table class="w-full text-sm">
+
+                            <thead
+                                class="bg-gray-50 dark:bg-white/5 text-gray-500">
+
+                                <tr>
+
+                                    <th class="text-left px-5 py-4">
+                                        Member
+                                    </th>
+
+                                    <th class="text-left px-5 py-4">
+                                        Course
+                                    </th>
+
+                                    <th class="text-left px-5 py-4">
+                                        Status
+                                    </th>
+
+                                    <th class="text-left px-5 py-4">
+                                        Join
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody class="divide-y divide-gray-100 dark:divide-white/5">
+
+                                <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+
+                                    <td class="px-5 py-4">
+
+                                        <div class="flex items-center gap-3">
+
+                                            <div
+                                                class="w-10 h-10 rounded-full bg-green-400/20 text-green-400 flex items-center justify-center font-bold">
+                                                AR
+                                            </div>
+
+                                            <div>
+                                                <p class="font-semibold">
+                                                    Ahmad Rizky
+                                                </p>
+
+                                                <p class="text-xs text-gray-500">
+                                                    ahmad@gmail.com
+                                                </p>
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td class="px-5 py-4">
+                                        Web Development
+                                    </td>
+
+                                    <td class="px-5 py-4">
+
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-green-500/10 text-green-500 text-xs">
+                                            Active
+                                        </span>
+
+                                    </td>
+
+                                    <td class="px-5 py-4 text-gray-500">
+                                        Today
+                                    </td>
+
+                                </tr>
+
+
+                                <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+
+                                    <td class="px-5 py-4">
+
+                                        <div class="flex items-center gap-3">
+
+                                            <div
+                                                class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-500 flex items-center justify-center font-bold">
+                                                SM
+                                            </div>
+
+                                            <div>
+                                                <p class="font-semibold">
+                                                    Sinta Maria
+                                                </p>
+
+                                                <p class="text-xs text-gray-500">
+                                                    sinta@gmail.com
+                                                </p>
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td class="px-5 py-4">
+                                        UI/UX Design
+                                    </td>
+
+                                    <td class="px-5 py-4">
+
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-green-500/10 text-green-500 text-xs">
+                                            Active
+                                        </span>
+
+                                    </td>
+
+                                    <td class="px-5 py-4 text-gray-500">
+                                        Yesterday
+                                    </td>
+
+                                </tr>
+
+
+                                <tr class="hover:bg-gray-50 dark:hover:bg-white/5">
+
+                                    <td class="px-5 py-4">
+
+                                        <div class="flex items-center gap-3">
+
+                                            <div
+                                                class="w-10 h-10 rounded-full bg-purple-500/20 text-purple-500 flex items-center justify-center font-bold">
+                                                DK
+                                            </div>
+
+                                            <div>
+                                                <p class="font-semibold">
+                                                    Dimas Kurniawan
+                                                </p>
+
+                                                <p class="text-xs text-gray-500">
+                                                    dimas@gmail.com
+                                                </p>
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+                                    <td class="px-5 py-4">
+                                        Laravel Backend
+                                    </td>
+
+                                    <td class="px-5 py-4">
+
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-500 text-xs">
+                                            Pending
+                                        </span>
+
+                                    </td>
+
+                                    <td class="px-5 py-4 text-gray-500">
+                                        2 days ago
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Activity -->
+                <div
+                    class="bg-white dark:bg-[#0b1510] rounded-2xl p-5 border border-gray-200 dark:border-white/10">
+
+                    <div class="flex justify-between">
+
+                        <div>
+                            <h3 class="font-bold text-lg">
+                                Aktivitas Terbaru
+                            </h3>
+
+                            <p class="text-xs text-gray-500">
+                                Aktivitas sistem
+                            </p>
+                        </div>
+
+                        <i class="fa-solid fa-ellipsis text-gray-400"></i>
+
+                    </div>
+
+
+                    <div class="mt-6 space-y-6">
+
+                        <div class="flex gap-3">
+
+                            <div
+                                class="w-9 h-9 rounded-full bg-green-400/10 text-green-400 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-user-plus text-xs"></i>
+                            </div>
+
+                            <div>
+
+                                <p class="text-sm">
+                                    Member baru mendaftar
+                                </p>
+
+                                <p class="text-xs text-gray-500">
+                                    Ahmad Rizky bergabung
+                                </p>
+
+                                <span class="text-[10px] text-gray-400">
+                                    5 menit lalu
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="flex gap-3">
+
+                            <div
+                                class="w-9 h-9 rounded-full bg-blue-500/10 text-blue-500 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-book text-xs"></i>
+                            </div>
+
+                            <div>
+
+                                <p class="text-sm">
+                                    Course baru dibuat
+                                </p>
+
+                                <p class="text-xs text-gray-500">
+                                    React JS Fundamental
+                                </p>
+
+                                <span class="text-[10px] text-gray-400">
+                                    30 menit lalu
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="flex gap-3">
+
+                            <div
+                                class="w-9 h-9 rounded-full bg-yellow-500/10 text-yellow-500 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-wallet text-xs"></i>
+                            </div>
+
+                            <div>
+
+                                <p class="text-sm">
+                                    Pembayaran diterima
+                                </p>
+
+                                <p class="text-xs text-gray-500">
+                                    Rp 750.000
+                                </p>
+
+                                <span class="text-[10px] text-gray-400">
+                                    1 jam lalu
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="flex gap-3">
+
+                            <div
+                                class="w-9 h-9 rounded-full bg-purple-500/10 text-purple-500 flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-certificate text-xs"></i>
+                            </div>
+
+                            <div>
+
+                                <p class="text-sm">
+                                    Sertifikat diterbitkan
+                                </p>
+
+                                <p class="text-xs text-gray-500">
+                                    12 sertifikat berhasil dibuat
+                                </p>
+
+                                <span class="text-[10px] text-gray-400">
+                                    2 jam lalu
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= FOOTER ================= -->
+            <footer class="mt-10 pt-6 border-t border-gray-200 dark:border-white/10">
+
+                <div
+                    class="flex flex-col md:flex-row justify-between gap-3 text-sm text-gray-500">
+
+                    <p>
+                        © 2026
+                        <span class="text-green-500 font-bold">
+                            NITCODE COMUNITY
+                        </span>.
+                        All rights reserved.
+                    </p>
+
+                    <div class="flex gap-5">
+                        <a href="#" class="hover:text-green-500">
+                            Documentation
+                        </a>
+
+                        <a href="#" class="hover:text-green-500">
+                            Support
+                        </a>
+
+                        <a href="#" class="hover:text-green-500">
+                            Privacy
+                        </a>
+                    </div>
+
+                </div>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+
+        // ================= SIDEBAR =================
+
+        function toggleSidebar() {
+
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('hidden');
+
+        }
+
+
+        // ================= DARK MODE =================
+
+        function toggleDarkMode() {
+
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+
+            html.classList.toggle('dark');
+
+            if (html.classList.contains('dark')) {
+
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+
+                localStorage.setItem('theme', 'dark');
+
+            } else {
+
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+
+                localStorage.setItem('theme', 'light');
+
+            }
+
+        }
+
+
+        // Load Theme
+
+        if (localStorage.getItem('theme') === 'dark') {
+
+            document.documentElement.classList.add('dark');
+
+            document.getElementById('themeIcon')
+                .classList.replace('fa-moon', 'fa-sun');
+
+        }
+
+
+        // ================= CHART =================
+
+        const ctx = document
+            .getElementById('memberChart')
+            .getContext('2d');
+
+        new Chart(ctx, {
+
+            type: 'line',
+
+            data: {
+
+                labels: [
+                    'Jan',
+                    'Feb',
+                    'Mar',
+                    'Apr',
+                    'Mei',
+                    'Jun',
+                    'Jul',
+                    'Agu'
+                ],
+
+                datasets: [{
+
+                    label: 'Members',
+
+                    data: [
+                        420,
+                        510,
+                        630,
+                        710,
+                        830,
+                        950,
+                        1120,
+                        1284
+                    ],
+
+                    borderColor: '#00ff88',
+
+                    backgroundColor: 'rgba(0,255,136,0.08)',
+
+                    borderWidth: 3,
+
+                    tension: 0.4,
+
+                    fill: true,
+
+                    pointRadius: 4,
+
+                    pointBackgroundColor: '#00ff88'
+
+                }]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                plugins: {
+
+                    legend: {
+                        display: false
+                    }
+
+                },
+
+                scales: {
+
+                    y: {
+
+                        beginAtZero: true,
+
+                        grid: {
+                            color: 'rgba(128,128,128,.1)'
+                        }
+
+                    },
+
+                    x: {
+
+                        grid: {
+                            display: false
+                        }
+
+                    }
+
+                }
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
